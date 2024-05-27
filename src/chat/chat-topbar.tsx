@@ -1,7 +1,7 @@
 import React from 'react'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import { UserData } from '@/app/data';
-import { Info, Phone, Video } from 'lucide-react';
+import { Lock,  AudioWaveform, CloudUpload } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
@@ -10,7 +10,7 @@ interface ChatTopbarProps {
     selectedUser: UserData;
     }
     
-    export const TopbarIcons = [{ icon: Phone }, { icon: Video }, { icon: Info }];
+    export const TopbarIcons = [{ icon: CloudUpload }, { icon: AudioWaveform }, { icon: Lock }];
 
 
 export default function ChatTopbar({selectedUser}: ChatTopbarProps) {
