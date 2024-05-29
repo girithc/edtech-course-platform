@@ -1,122 +1,172 @@
-'use client';
-
-import * as React from 'react';
-import Link from 'next/link';
+import { CalendarDateRangePicker } from "@/components/date-range-picker";
+import { Overview } from "@/components/overview";
+import { RecentSales } from "@/components/recent-sales";
+import { Button } from "@/components/ui/button";
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from '@radix-ui/react-navigation-menu';
-import { ChatLayout } from '@/chat/chat-layout';
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ChatLayout } from "./chat/chat-layout";
+import { Heading } from "@/components/ui/heading";
+import Link from "next/link";
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: 'Alert Dialog',
-    href: '/docs/primitives/alert-dialog',
-    description: 'A modal dialog that interrupts the user with important content and expects a response.',
-  },
-  {
-    title: 'Hover Card',
-    href: '/docs/primitives/hover-card',
-    description: 'For sighted users to preview content available behind a link.',
-  },
-  {
-    title: 'Progress',
-    href: '/docs/primitives/progress',
-    description: 'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
-  },
-  {
-    title: 'Scroll-area',
-    href: '/docs/primitives/scroll-area',
-    description: 'Visually or semantically separates content.',
-  },
-  {
-    title: 'Tabs',
-    href: '/docs/primitives/tabs',
-    description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
-  },
-  {
-    title: 'Tooltip',
-    href: '/docs/primitives/tooltip',
-    description: 'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
-  },
-];
-
-const ListItem = React.forwardRef<
-  React.ElementRef<'a'>,
-  React.ComponentPropsWithoutRef<'a'>
->(({ className, title, children, ...props }, ref) => (
-  <li>
-    <a
-      ref={ref}
-      className={`block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground ${className}`}
-      {...props}
-    >
-      <div className='text-sm font-medium leading-none'>{title}</div>
-      <p className='line-clamp-2 text-sm leading-snug text-muted-foreground'>
-        {children}
-      </p>
-    </a>
-  </li>
-));
-ListItem.displayName = 'ListItem';
-
-export default function Home() {
+export default function page() {
   return (
-    
-      
-    <main className='flex h-[calc(100vh)]  flex-col items-center justify-center p-4 md:px-24 py-32 gap-4'>
-    <div className='flex justify-between max-w-5xl w-full items-center'>
-          <Link href='#' className='text-4xl font-bold text-gradient'>alex</Link>
-          <NavigationMenu>
-            <NavigationMenuList className="flex space-x-4">
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>talk</NavigationMenuTrigger>
-                <NavigationMenuContent className="absolute bg-white shadow-md mt-1 rounded-lg p-4 z-50">
-                  <ul>
-                    <ListItem href="/" title="shadcn/ui">
-                      Beautifully designed components built with Radix UI and Tailwind CSS.
-                    </ListItem>
-                    <ListItem href="/docs" title="Introduction">
-                      Re-usable components built using Radix UI and Tailwind CSS.
-                    </ListItem>
-                    <ListItem href="/docs/installation" title="Installation">
-                      How to install dependencies and structure your app.
-                    </ListItem>
-                    <ListItem href="/docs/primitives/typography" title="Typography">
-                      Styles for headings, paragraphs, lists...etc
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/feed" legacyBehavior passHref>
-                  <NavigationMenuLink>
-                    ai tools
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/docs" legacyBehavior passHref>
-                  <NavigationMenuLink>
-                    profile
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-    </div>
-
-        <div className='z-10 border rounded-lg max-w-5xl w-full h-full text-sm lg:flex'>
-          <ChatLayout navCollapsedSize={8} />
+    <ScrollArea className="h-full">
+      <div className="flex-1 space-y-4 p-4 pt-6 md:p-6">
+        <div className="flex items-center justify-between space-y-2">
+          <Heading title="talk" description="beta feature"></Heading>
+          <div className=" items-center space-x-2 md:flex">
+            <Link href={"/feed"}>
+              <Button>ai tools</Button>
+            </Link>
+          </div>
         </div>
+        <Tabs defaultValue="overview" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          </TabsList>
+          <TabsContent value="analytics" className="space-y-4">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Total Posts
+                  </CardTitle>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="h-4 w-4 text-muted-foreground"
+                  >
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                  </svg>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">$45,231.89</div>
+                  <p className="text-xs text-muted-foreground">
+                    +20.1% from last month
+                  </p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Subscriptions
+                  </CardTitle>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="h-4 w-4 text-muted-foreground"
+                  >
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">+2350</div>
+                  <p className="text-xs text-muted-foreground">
+                    +180.1% from last month
+                  </p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Interactions
+                  </CardTitle>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="h-4 w-4 text-muted-foreground"
+                  >
+                    <rect width="20" height="14" x="2" y="5" rx="2" />
+                    <path d="M2 10h20" />
+                  </svg>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">+12,234</div>
+                  <p className="text-xs text-muted-foreground">
+                    +19% from last month
+                  </p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Active Now
+                  </CardTitle>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="h-4 w-4 text-muted-foreground"
+                  >
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                  </svg>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">+573</div>
+                  <p className="text-xs text-muted-foreground">
+                    +201 since last hour
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7">
+              <Card className="col-span-4">
+                <CardHeader>
+                  <CardTitle>Overview</CardTitle>
+                </CardHeader>
+                <CardContent className="pl-2">
+                  <Overview />
+                </CardContent>
+              </Card>
+              <Card className="col-span-4 md:col-span-3">
+                <CardHeader>
+                  <CardTitle>Beta Feature</CardTitle>
+                  <CardDescription>working on it</CardDescription>
+                </CardHeader>
+                {/*<CardContent><RecentSales  /></CardContent>*/}
+              </Card>
+            </div>
+          </TabsContent>
+          <TabsContent value="overview" className="space-y-4">
+            <main className="flex h-[calc(80vh)]  flex-col items-center justify-center gap-4 p-2 py-4 md:px-0">
+              <div className="z-10 h-full w-full max-w-5xl rounded-lg border text-sm lg:flex">
+                <ChatLayout navCollapsedSize={8} />
+              </div>
 
-        <div className='flex justify-between max-w-5xl w-full items-start text-xs md:text-sm text-muted-foreground'></div>
-      </main>
-    
+              <div className="flex w-full max-w-5xl items-start justify-between text-xs text-muted-foreground md:text-sm"></div>
+            </main>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </ScrollArea>
   );
 }
-
