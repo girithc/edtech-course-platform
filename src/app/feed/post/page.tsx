@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 
-import { CalendarDateRangePicker } from "@/components/date-range-picker";
 import { Overview } from "@/components/overview";
 import { RecentSales } from "@/components/recent-sales";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -23,7 +22,6 @@ import BreadCrumb from "@/components/breadcrumb";
 import { UserNav } from "@/components/layout/user-nav";
 import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
 
-export const TopbarIcons = [{ icon: ArrowBigUp }, { icon: ArrowBigDown }];
 const breadcrumbItems = [{ title: "Feed", link: "/feed" }];
 
 export default function page() {

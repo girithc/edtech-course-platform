@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 
-import { CalendarDateRangePicker } from "@/components/date-range-picker";
 import { Overview } from "@/components/overview";
 import { RecentSales } from "@/components/recent-sales";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -22,8 +21,8 @@ import { cn } from "@/lib/utils";
 import BreadCrumb from "@/components/breadcrumb";
 import { UserNav } from "@/components/layout/user-nav";
 import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
+import React from "react";
 
-export const TopbarIcons = [{ icon: ArrowBigUp }, { icon: ArrowBigDown }];
 const breadcrumbItems = [{ title: "Feed", link: "/feed" }];
 
 export default function page() {
@@ -72,30 +71,6 @@ export default function page() {
                   <Link href={"/feed/post"}>
                     <Button variant="secondary">Read</Button>
                   </Link>
-                  <div className="flex items-center rounded-2xl bg-secondary">
-                    {TopbarIcons.map((icon, index) => (
-                      <>
-                        <Link
-                          key={index}
-                          href="#"
-                          className={cn(
-                            buttonVariants({ variant: "ghost", size: "icon" }),
-                            "h-9 w-9",
-                            "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
-                          )}
-                        >
-                          <icon.icon
-                            size={20}
-                            className="text-muted-foreground"
-                          />
-                        </Link>
-                        {index === 0 && (
-                          <span className="mx-1 text-sm">100</span>
-                        )}{" "}
-                        {/* Render number after the first icon */}
-                      </>
-                    ))}
-                  </div>
                 </CardFooter>
               </Card>
             ))}
