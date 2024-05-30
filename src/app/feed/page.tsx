@@ -28,7 +28,7 @@ const breadcrumbItems = [{ title: "Feed", link: "/feed" }];
 export default function page() {
   return (
     <>
-      <ScrollArea className="h-full">
+      <ScrollArea className="h-full pl-20 pr-20 pt-10 md:p-30 lg:p-35 ">
         <div className="flex-1 space-y-4 p-4 pt-6 md:p-6">
           <div className="flex items-center justify-between space-y-2">
             <div className=" items-center space-x-2 md:flex">
@@ -45,7 +45,7 @@ export default function page() {
               <ThemeToggle />
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4 ">
+          <div className="grid gap-4 md:gap-8 lg:gap-12 xl:gap-16 lf:gap-20 grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 ">
             {Array.from({ length: 8 }).map((_, index) => (
               <Card
                 key={index}

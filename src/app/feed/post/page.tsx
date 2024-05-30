@@ -27,8 +27,8 @@ const breadcrumbItems = [{ title: "Feed", link: "/feed" }];
 export default function page() {
   return (
     <>
-      <ScrollArea className="h-full">
-        <div className="flex-1 space-y-4 p-4 pt-6 md:p-6">
+      <ScrollArea className="h-full pl-20 pr-20 pt-10 md:p-30 lg:p-35 ">
+        <div className="flex-1 space-y-4 p-4 pt-6 md:p-6 ">
           <div className="flex items-center justify-between space-y-2">
             <div className=" items-center space-x-2 md:flex">
               <Link href={"/feed"}>
@@ -44,7 +44,7 @@ export default function page() {
               <ThemeToggle />
             </div>
           </div>
-          <div className="flex-1 space-y-4 p-4 pt-6 md:p-6">
+          <div className="flex items-center justify-center space-y-4 p-4 pt-6 md:p-6">
             {" "}
             {/*<BreadCrumb items={breadcrumbItems} />*/}
             <div className="z-10  h-full w-full max-w-5xl  rounded-lg p-4 text-lg">
