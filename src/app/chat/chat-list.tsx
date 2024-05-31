@@ -1,5 +1,5 @@
 import { Message, UserData } from "@/app/data";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import React, { useRef } from "react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import ChatBottombar from "./chat-bottombar";
@@ -16,7 +16,7 @@ export function ChatList({
   messages,
   selectedUser,
   sendMessage,
-  isMobile
+  isMobile,
 }: ChatListProps) {
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
@@ -87,7 +87,7 @@ export function ChatList({
           ))}
         </AnimatePresence>
       </div>
-      <ChatBottombar sendMessage={sendMessage} isMobile={isMobile}/>
+      <ChatBottombar sendMessage={sendMessage} isMobile={isMobile} />
     </div>
   );
 }

@@ -1,10 +1,10 @@
-import React from 'react';
-import { Avatar, AvatarImage } from '@/components/ui/avatar';
-import { UserData } from '@/app/data';
-import { Lock, FileAudio, UploadCloud, LucideWaves } from 'lucide-react';
-import Link from 'next/link';
-import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button';
+import React from "react";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { UserData } from "@/app/data";
+import { Lock, FileAudio, UploadCloud, LucideWaves } from "lucide-react";
+import Link from "next/link";
+import { cn } from "../../lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 interface ChatTopbarProps {
   selectedUser: UserData;
@@ -13,7 +13,7 @@ interface ChatTopbarProps {
 export const TopbarIcons = [
   { icon: UploadCloud },
   { icon: LucideWaves },
-  { icon: Lock }
+  { icon: Lock },
 ];
 
 export default function ChatTopbar({ selectedUser }: ChatTopbarProps) {
@@ -41,9 +41,9 @@ export default function ChatTopbar({ selectedUser }: ChatTopbarProps) {
             key={index}
             href="#"
             className={cn(
-              buttonVariants({ variant: 'ghost', size: 'icon' }),
-              'h-9 w-9',
-              'dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white'
+              buttonVariants({ variant: "ghost", size: "icon" }),
+              "h-9 w-9",
+              "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
             )}
           >
             <icon.icon size={20} className="text-muted-foreground" />

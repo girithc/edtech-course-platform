@@ -16,7 +16,7 @@ import Link from "next/link";
 
 export default function page() {
   return (
-    <ScrollArea className="h-full">
+    <ScrollArea className="h-full pl-20 pr-20 pt-10 md:p-30 lg:p-35">
       <div className="flex-1 space-y-4 p-4 pt-6 md:p-6">
         <div className="flex items-center justify-between space-y-2">
           <Heading title="talk" description="beta feature"></Heading>
@@ -28,8 +28,8 @@ export default function page() {
         </div>
         <Tabs defaultValue="overview" className="space-y-4">
           <TabsList>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger value="overview">chat</TabsTrigger>
+            <TabsTrigger value="analytics">analytics</TabsTrigger>
           </TabsList>
           <TabsContent value="analytics" className="space-y-4">
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">

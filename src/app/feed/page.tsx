@@ -1,11 +1,6 @@
-import { useRouter } from "next/router";
-
-import { Overview } from "@/components/overview";
-import { RecentSales } from "@/components/recent-sales";
-import { Button, buttonVariants } from "@/components/ui/button";
-import Image from "next/image"; // This is crucial to differentiate from the global Image object
-import { ArrowBigUp, ArrowBigDown } from "lucide-react";
-
+import { GetServerSideProps } from "next";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -15,40 +10,61 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import BreadCrumb from "@/components/breadcrumb";
 import { UserNav } from "@/components/layout/user-nav";
 import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
 import React from "react";
+import prisma from "./prisma";
+import { useRouter } from "next/navigation";
 
-const breadcrumbItems = [{ title: "Feed", link: "/feed" }];
+interface Author {
+  name: string | null; // Allow name to be null
+}
 
-export default function page() {
+interface Post {
+  id: string;
+  title: string;
+  content: string | null; // Allow content to be null
+  author?: Author; // Author can be undefined if not included
+}
+
+async function getData() {
+  const posts = await prisma.post.findMany({
+    include: {
+      author: {
+        select: { name: true },
+      },
+    },
+  });
+
+  return posts;
+}
+
+export default async function Page() {
+  const posts = getData();
+
   return (
     <>
-      <ScrollArea className="h-full pl-20 pr-20 pt-10 md:p-30 lg:p-35 ">
+      <ScrollArea className="h-full pl-20 pr-20 pt-10 md:p-30 lg:p-35">
         <div className="flex-1 space-y-4 p-4 pt-6 md:p-6">
           <div className="flex items-center justify-between space-y-2">
-            <div className=" items-center space-x-2 md:flex">
-              <Link href={"/feed/post"}>
-                <Button variant={"secondary"}>post</Button>
+            <div className="items-center space-x-2 md:flex">
+              <Link href={"/feed"}>
+                <Button variant={"secondary"}>Post</Button>
               </Link>
               <Link href={"/"}>
-                <Button>talk</Button>
+                <Button>Talk</Button>
               </Link>
             </div>
             <div className="flex items-center gap-2">
-              {/* Conditional rendering based on the route */}
               <UserNav />
               <ThemeToggle />
             </div>
           </div>
-          <div className="grid gap-4 md:gap-8 lg:gap-12 xl:gap-16 lf:gap-20 grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 ">
-            {Array.from({ length: 8 }).map((_, index) => (
+          <div className="grid gap-4 md:gap-8 lg:gap-12 xl:gap-16 lf:gap-20 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {(await posts).map((post) => (
               <Card
-                key={index}
+                key={post.id}
                 className="md:w-[calc(50% - 20px)] lg:w-[calc(33.333% - 20px)] mb-5 break-inside-avoid"
               >
                 <CardContent className="flex items-center justify-center">
@@ -61,34 +77,18 @@ export default function page() {
                   />
                 </CardContent>
                 <CardHeader>
-                  <CardTitle>Create project</CardTitle>
+                  <CardTitle>{post.title}</CardTitle>
                   <CardDescription>
-                    Deploy your new project in one-click. Deploy your new
-                    project in one-click. Deploy your new project in one-click.
+                    {post.content || "No description available."}
                   </CardDescription>
                 </CardHeader>
                 <CardFooter className="flex justify-between">
-                  <Link href={"/feed/post"}>
-                    <Button variant="secondary">Read</Button>
+                  <Link href={`/feed/${post.id}`}>
+                    <Button variant="secondary">Read </Button>
                   </Link>
                 </CardFooter>
               </Card>
             ))}
-          </div>
-          <div className="flex items-center justify-between space-y-2">
-            <div className=" items-center space-x-2 md:flex">
-              <Link href={"/feed/post"}>
-                <Button variant={"secondary"}>post</Button>
-              </Link>
-              <Link href={"/"}>
-                <Button>talk</Button>
-              </Link>
-            </div>
-            <div className="flex items-center gap-2">
-              {/* Conditional rendering based on the route */}
-              <UserNav />
-              <ThemeToggle />
-            </div>
           </div>
         </div>
       </ScrollArea>
