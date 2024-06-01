@@ -15,7 +15,6 @@ import { UserNav } from "@/components/layout/user-nav";
 import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
 import React from "react";
 import prisma from "./prisma";
-import { useRouter } from "next/navigation";
 
 interface Author {
   name: string | null; // Allow name to be null
@@ -24,7 +23,13 @@ interface Author {
 interface Post {
   id: string;
   title: string;
-  content: string | null; // Allow content to be null
+  summary: string;
+  content: {
+    sections: Array<{
+      heading: string;
+      content: string;
+    }>;
+  } | null; // Allow content to be null
   author?: Author; // Author can be undefined if not included
 }
 
@@ -41,7 +46,7 @@ async function getData() {
 }
 
 export default async function Page() {
-  const posts = getData();
+  const posts = await getData();
 
   return (
     <>
@@ -62,7 +67,7 @@ export default async function Page() {
             </div>
           </div>
           <div className="grid gap-4 md:gap-8 lg:gap-12 xl:gap-16 lf:gap-20 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {(await posts).map((post) => (
+            {posts.map((post) => (
               <Card
                 key={post.id}
                 className="md:w-[calc(50% - 20px)] lg:w-[calc(33.333% - 20px)] mb-5 break-inside-avoid"
@@ -78,9 +83,7 @@ export default async function Page() {
                 </CardContent>
                 <CardHeader>
                   <CardTitle>{post.title}</CardTitle>
-                  <CardDescription>
-                    {post.content || "No description available."}
-                  </CardDescription>
+                  <CardDescription>{post.summary}</CardDescription>
                 </CardHeader>
                 <CardFooter className="flex justify-between">
                   <Link href={`/feed/${post.id}`}>
