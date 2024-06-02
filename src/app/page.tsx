@@ -437,14 +437,14 @@ export default function GlobeDemo() {
   }
 
   return (
-    <div className="relative flex flex-col items-center justify-center py-10 h-screen dark:bg-black bg-white w-full overflow-hidden">
+    <div className="relative flex flex-col items-center justify-center py-8 h-screen dark:bg-black bg-white w-full overflow-hidden">
       {/* Sparkles background */}
       <div className="absolute inset-0 z-0">
         <BackgroundBeams />
       </div>
 
-      <div className="max-w-7xl w-full relative overflow-hidden h-full md:h-auto px-8 z-5">
-        <div className="flex items-center justify-between mb-4">
+      <div className="max-w-7xl w-full relative overflow-hidden h-full md:h-auto  z-5">
+        <div className="flex items-center justify-between mb-4 px-10">
           <div className="items-center space-x-2 md:flex"></div>
           <div className="flex items-center gap-2">
             <ThemeToggle />
@@ -473,7 +473,7 @@ export default function GlobeDemo() {
 
         <div className="absolute w-full bottom-0 inset-x-0 h-20 pointer-events-none select-none from-transparent dark:to-black to-white z-10" />
 
-        <div className="relative w-full h-full md:h-[40rem] z-20 p-0 items-center justify-center">
+        <div className="relative w-full h-full md:h-[70rem] z-20 p-0 items-center justify-center">
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
       </div>
