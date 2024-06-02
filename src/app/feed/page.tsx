@@ -54,10 +54,10 @@ export default async function Page() {
         <div className="flex-1 space-y-4 p-4 pt-6 md:p-6">
           <div className="flex items-center justify-between space-y-2">
             <div className="items-center space-x-2 md:flex">
-              <Link href={"/feed"}>
+              <Link href={"/"}>
                 <Button variant={"secondary"}>Post</Button>
               </Link>
-              <Link href={"/"}>
+              <Link href={"/talk"}>
                 <Button>Talk</Button>
               </Link>
             </div>
