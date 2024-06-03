@@ -104,10 +104,10 @@ export default async function Page() {
                     <Image
                       src={"/sky.jpeg"}
                       alt="thumbnail"
-                      width={250}
+                      width={350}
                       height={100}
                       objectFit="cover"
-                      className={`group-hover:scale-95 group-hover:rounded-2xl transform object-cover transition duration-200 `}
+                      className={`group-hover:scale-95 group-hover:rounded-2xl transform object-cover transition duration-200 rounded-lg`}
                     />
                   </div>
                 }
