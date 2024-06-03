@@ -25,7 +25,7 @@ export default function GlobeDemo() {
 
   const globeConfig = {
     pointSize: 4,
-    globeColor: "#2EDAFF",
+    globeColor: "#0021bf",
     showAtmosphere: true,
     atmosphereColor: "#FFFFFF",
     atmosphereAltitude: 0.1,
@@ -36,7 +36,7 @@ export default function GlobeDemo() {
     ambientLight: "#FF95ED",
     directionalLeftLight: "#FFFFFF",
     directionalTopLight: "#FFFFFF",
-    pointLight: "#FF95ED",
+    pointLight: "#ff5d0d",
     arcTime: 1000,
     arcLength: 0.9,
     rings: 1,
@@ -45,7 +45,7 @@ export default function GlobeDemo() {
     autoRotate: true,
     autoRotateSpeed: 4.0,
   };
-  const colors = ["#000000", "#000000", "#000000"];
+  const colors = ["#ff5d0d", "#ff5d0d", "#ff5d0d"];
   const sampleArcs = [
     {
       order: 1,
@@ -473,7 +473,7 @@ export default function GlobeDemo() {
 
         <div className="absolute w-full bottom-0 inset-x-0 h-20 pointer-events-none select-none from-transparent dark:to-black to-white z-10" />
 
-        <div className="relative w-full h-full md:h-[70rem] z-20 p-0 items-center justify-center">
+        <div className="relative border w-full h-full md:h-[60rem] z-0 p-0 items-center justify-center">
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
       </div>
