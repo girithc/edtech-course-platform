@@ -15,6 +15,7 @@ import { UserNav } from "@/components/layout/user-nav";
 import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
 import React from "react";
 import prisma from "./prisma";
+import { BackgroundGradient } from "@/components/background-gradient";
 
 interface Author {
   name: string | null; // Allow name to be null
@@ -50,7 +51,7 @@ export default async function Page() {
 
   return (
     <>
-      <ScrollArea className="h-full pl-20 pr-20 pt-10 md:p-30 lg:p-35">
+      <ScrollArea>
         <div className="flex-1 space-y-4 p-4 pt-6 md:p-6">
           <div className="flex items-center justify-between space-y-2">
             <div className="items-center space-x-2 md:flex">

@@ -25,15 +25,15 @@ export default function GlobeDemo() {
 
   const globeConfig = {
     pointSize: 4,
-    globeColor: "#0021bf",
+    globeColor: "#0decff",
     showAtmosphere: true,
-    atmosphereColor: "#FFFFFF",
+    atmosphereColor: "#03AC13",
     atmosphereAltitude: 0.1,
-    emissive: "#062056",
+    emissive: "#03AC13",
     emissiveIntensity: 0.1,
     shininess: 0.9,
-    polygonColor: "#FFFFFF",
-    ambientLight: "#FF95ED",
+    polygonColor: "#000000",
+    ambientLight: "#FFFFFF",
     directionalLeftLight: "#FFFFFF",
     directionalTopLight: "#FFFFFF",
     pointLight: "#ff5d0d",
@@ -409,33 +409,6 @@ export default function GlobeDemo() {
     },
   ];
 
-  function copy(
-    button:
-      | {
-          name: string;
-          description: string;
-          component: React.JSX.Element;
-          showDot?: undefined;
-          code?: undefined;
-        }
-      | {
-          name: string;
-          description: string;
-          showDot: boolean;
-          component: React.JSX.Element;
-          code?: undefined;
-        }
-      | {
-          name: string;
-          description: string;
-          showDot: boolean;
-          component: React.JSX.Element;
-          code: string;
-        }
-  ): void {
-    throw new Error("Function not implemented.");
-  }
-
   return (
     <div className="relative flex flex-col items-center justify-center py-8 h-screen dark:bg-black bg-white w-full overflow-hidden">
       {/* Sparkles background */}
@@ -471,9 +444,7 @@ export default function GlobeDemo() {
           </div>
         </motion.div>
 
-        <div className="absolute w-full bottom-0 inset-x-0 h-20 pointer-events-none select-none from-transparent dark:to-black to-white z-10" />
-
-        <div className="relative border w-full h-full md:h-[60rem] z-0 p-0 items-center justify-center">
+        <div className="relative w-full h-full md:h-[60rem] z-0 p-0 items-center justify-center">
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
       </div>
