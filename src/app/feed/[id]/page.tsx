@@ -11,18 +11,7 @@ import { JsonValue } from "@prisma/client/runtime/library";
 import Head from "next/head";
 import { TracingBeam } from "@/components/tracing-beam";
 import { FloatingNav } from "@/components/floating-navbar";
-import {
-  IconArrowWaveRightUp,
-  IconBoxAlignRightFilled,
-  IconBoxAlignTopLeft,
-  IconClipboardCopy,
-  IconFileBroken,
-  IconSignature,
-  IconTableColumn,
-  IconUser,
-  IconMessage,
-  IconHome,
-} from "@tabler/icons-react";
+import { IconRefresh, IconHome } from "@tabler/icons-react";
 import { DirectionAwareHover } from "@/components/direction-aware-hover";
 
 const breadcrumbItems = [{ title: "Feed", link: "/feed" }];
@@ -102,7 +91,9 @@ export default async function Page({ params }: { params: { id: string } }) {
     {
       name: "refresh",
       link: "/feed/" + params.id,
-      icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: (
+        <IconRefresh className="h-4 w-4 text-neutral-500 dark:text-white" />
+      ),
     },
   ];
 
@@ -150,7 +141,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           </div>
           <div className="flex items-center justify-center space-y-4 p-4 pt-6 md:p-6">
             <div className="z-10  w-full max-w-5xl rounded-lg p-4 text-lg">
-              <h1 className="mb-4 text-2xl font-bold w-full flex justify-center items-center">
+              <h1 className="mb-4 text-4xl font-bold w-full flex justify-center items-center text-center">
                 {post.title}
               </h1>
               {post.content ? (
@@ -169,7 +160,9 @@ export default async function Page({ params }: { params: { id: string } }) {
                           <p className="font-bold text-xl md:text-xl">
                             {section.heading}
                           </p>
-                          <p className="font-normal text-sm">google.com</p>
+                          <Link target="_blank" href="https://google.com">
+                            <p className="font-normal text-sm">google.com</p>
+                          </Link>
                         </DirectionAwareHover>
                       </div>
                       <strong className="font-semibold"></strong>
