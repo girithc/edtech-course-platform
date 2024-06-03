@@ -121,7 +121,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           })}
         </script>
       </Head>
-      <TracingBeam className="px-6">
+      <TracingBeam className="px-4 mx-1">
         <div className="flex-1 space-y-4 p-4 pt-6 md:p-6 ">
           <FloatingNav navItems={navItems} />
 

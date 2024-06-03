@@ -100,12 +100,12 @@ export default async function Page() {
                 title={post.title}
                 description={post.summary}
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
+                  <div className="flex flex-1 w-full h-full  rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
                     <Image
                       src={"/sky.jpeg"}
                       alt="thumbnail"
-                      width={350}
-                      height={100}
+                      width={300}
+                      height={150}
                       objectFit="cover"
                       className={`group-hover:scale-95 group-hover:rounded-2xl transform object-cover transition duration-200 rounded-lg`}
                     />
