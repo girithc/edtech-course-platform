@@ -2,15 +2,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { SparklesCore } from "../components/sparkles";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { UserNav } from "@/components/layout/user-nav";
 import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
 import { BackgroundBeams } from "@/components/background-beams";
 import { FlipWords } from "@/components/flip-words";
-import { toast, Toaster } from "sonner";
-import { ButtonsCard } from "@/components/tailwindcss-buttons";
 import { ArrowRight } from "lucide-react";
 
 const World = dynamic(
@@ -416,7 +411,7 @@ export default function GlobeDemo() {
         <BackgroundBeams />
       </div>
 
-      <div className="max-w-7xl w-full relative overflow-hidden h-full md:h-auto  z-5">
+      <div className="max-w-7xl w-full relative overflow-hidden h-full md:h-auto z-5">
         <div className="flex items-center justify-between mb-4 px-10">
           <div className="items-center space-x-2 md:flex"></div>
           <div className="flex items-center gap-2">
