@@ -83,9 +83,6 @@ export default async function Page() {
             <Link href={"/"}>
               <Button variant={"outline"}>Home</Button>
             </Link>
-            <Link href={"/talk"}>
-              <Button>Talk</Button>
-            </Link>
           </div>
           <div className="flex items-center gap-2">
             <UserNav />
