@@ -100,7 +100,7 @@ export default async function Page() {
                 title={post.title}
                 description={post.summary}
                 header={
-                  <div className="flex flex-1 w-full h-full  rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
+                  <div className="flex flex-1 w-full h-full rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
                     <Image
                       src={"/sky.jpeg"}
                       alt="thumbnail"
