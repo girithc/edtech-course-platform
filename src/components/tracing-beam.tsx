@@ -39,7 +39,7 @@ export const TracingBeam = ({
     }
   );
   const y2 = useSpring(
-    useTransform(scrollYProgress, [0, 1], [10, svgHeight - 100]),
+    useTransform(scrollYProgress, [0, 1], [10, svgHeight - 180]),
     {
       stiffness: 500,
       damping: 90,

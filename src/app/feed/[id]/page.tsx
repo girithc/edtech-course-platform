@@ -23,6 +23,7 @@ import {
   IconMessage,
   IconHome,
 } from "@tabler/icons-react";
+import { DirectionAwareHover } from "@/components/direction-aware-hover";
 
 const breadcrumbItems = [{ title: "Feed", link: "/feed" }];
 
@@ -148,17 +149,32 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
           <div className="flex items-center justify-center space-y-4 p-4 pt-6 md:p-6">
-            <div className="z-10 h-full w-full max-w-5xl rounded-lg p-4 text-lg">
-              <h1 className="mb-4 text-2xl font-bold">{post.title}</h1>
+            <div className="z-10  w-full max-w-5xl rounded-lg p-4 text-lg">
+              <h1 className="mb-4 text-2xl font-bold w-full flex justify-center items-center">
+                {post.title}
+              </h1>
               {post.content ? (
                 <ul className="list-disc space-y-4 pl-5">
                   {post.content.sections.map((section, index) => (
-                    <li key={index}>
-                      <strong className="font-semibold">
-                        {section.heading}
-                      </strong>
-                      <p>{section.content}</p>
-                    </li>
+                    <div
+                      key={index}
+                      className="flex justify-center items-center flex-col mb-8 py-6"
+                    >
+                      <div className="w-full flex justify-center items-center">
+                        <DirectionAwareHover
+                          imageUrl={"/sky.jpeg"}
+                          imageClassName=""
+                          className="h-100"
+                        >
+                          <p className="font-bold text-xl md:text-xl">
+                            {section.heading}
+                          </p>
+                          <p className="font-normal text-sm">google.com</p>
+                        </DirectionAwareHover>
+                      </div>
+                      <strong className="font-semibold"></strong>
+                      <p className="pt-5">{section.content}</p>
+                    </div>
                   ))}
                 </ul>
               ) : (
