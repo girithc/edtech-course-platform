@@ -82,7 +82,7 @@ export default async function Page() {
           <div className="flex items-center justify-between space-y-2">
             <div className="items-center space-x-2 md:flex">
               <Link href={"/"}>
-                <Button variant={"secondary"}>Post</Button>
+                <Button variant={"secondary"}>Home</Button>
               </Link>
               <Link href={"/talk"}>
                 <Button>Talk</Button>
@@ -94,15 +94,19 @@ export default async function Page() {
             </div>
           </div>
           <BentoGrid className="max-w-3xl mx-auto">
-            {items.map((item, i) => (
-              <BentoGridItem
-                key={i}
-                title={item.title}
-                description={item.description}
-                header={item.header}
-                icon={item.icon}
-                className={i === 3 || i === 6 ? " md:col-span-2" : "col-2"}
-              />
+            {posts.map((post, i) => (
+              <Link href={`/feed/${post.id}`}>
+                <BentoGridItem
+                  key={post.id}
+                  title={post.title}
+                  description={post.summary}
+                  header={<Skeleton />}
+                  icon={
+                    <IconClipboardCopy className="h-4 w-4 text-neutral-500" />
+                  }
+                  className={i === 3 || i === 6 ? " md:col-span-2" : " col-2"}
+                />
+              </Link>
             ))}
           </BentoGrid>
         </div>
