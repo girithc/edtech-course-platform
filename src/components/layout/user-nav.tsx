@@ -37,15 +37,15 @@ export function UserNav({ page }: { page?: string }) {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <Link href={page === "profile" ? "/" : "/feed"}>
+          <Link href={page === "profile" ? "/talk" : "/feed"}>
             <DropdownMenuItem>
               {page === "profile" ? "talk" : "feed"}
               <DropdownMenuShortcut>beta</DropdownMenuShortcut>
             </DropdownMenuItem>
           </Link>
-          <Link href={page === "profile" ? "/feed" : "/profile"}>
+          <Link href={page === "profile" ? "/feed" : "/"}>
             <DropdownMenuItem>
-              {page === "profile" ? "feed" : "profile"}
+              {page === "profile" ? "feed" : "home"}
               <DropdownMenuShortcut>beta</DropdownMenuShortcut>
             </DropdownMenuItem>
           </Link>

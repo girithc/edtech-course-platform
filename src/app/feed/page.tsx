@@ -75,42 +75,51 @@ export default async function Page() {
 
   return (
     <>
-      <ScrollArea>
-        <div className="flex-1 space-y-4 p-4 pt-6 md:p-6">
-          <FloatingNav navItems={navItems} />
+      <div className="flex-1 space-y-4 p-4 pt-6 md:p-6">
+        <FloatingNav navItems={navItems} />
 
-          <div className="flex items-center justify-between space-y-2">
-            <div className="items-center space-x-2 md:flex">
-              <Link href={"/"}>
-                <Button variant={"secondary"}>Home</Button>
-              </Link>
-              <Link href={"/talk"}>
-                <Button>Talk</Button>
-              </Link>
-            </div>
-            <div className="flex items-center gap-2">
-              <UserNav />
-              <ThemeToggle />
-            </div>
+        <div className="flex items-center justify-between space-y-2">
+          <div className="items-center space-x-2 md:flex">
+            <Link href={"/"}>
+              <Button variant={"outline"}>Home</Button>
+            </Link>
+            <Link href={"/talk"}>
+              <Button>Talk</Button>
+            </Link>
           </div>
-          <BentoGrid className="max-w-3xl mx-auto">
-            {posts.map((post, i) => (
-              <Link href={`/feed/${post.id}`}>
-                <BentoGridItem
-                  key={post.id}
-                  title={post.title}
-                  description={post.summary}
-                  header={<Skeleton />}
-                  icon={
-                    <IconClipboardCopy className="h-4 w-4 text-neutral-500" />
-                  }
-                  className={i === 3 || i === 6 ? " md:col-span-2" : " col-2"}
-                />
-              </Link>
-            ))}
-          </BentoGrid>
+          <div className="flex items-center gap-2">
+            <UserNav />
+            <ThemeToggle />
+          </div>
         </div>
-      </ScrollArea>
+        <BentoGrid className="max-w-3xl">
+          {posts.map((post, i) => (
+            <Link href={`/feed/${post.id}`}>
+              <BentoGridItem
+                key={post.id}
+                title={post.title}
+                description={post.summary}
+                header={
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
+                    <Image
+                      src={"/sky.jpeg"}
+                      alt="thumbnail"
+                      width={250}
+                      height={100}
+                      objectFit="cover"
+                      className={`group-hover:scale-95 group-hover:rounded-2xl transform object-cover transition duration-200 `}
+                    />
+                  </div>
+                }
+                icon={
+                  <IconClipboardCopy className="h-4 w-4 text-neutral-500" />
+                }
+                className={i === 3 || i === 6 ? " md:col-span-2" : " col-2"}
+              />
+            </Link>
+          ))}
+        </BentoGrid>
+      </div>
     </>
   );
 }

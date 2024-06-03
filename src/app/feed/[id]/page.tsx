@@ -136,7 +136,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <div className="flex items-center justify-between space-y-2">
             <div className=" items-center space-x-2 md:flex">
               <Link href={"/"}>
-                <Button variant={"secondary"}>Home</Button>
+                <Button variant={"outline"}>Home</Button>
               </Link>
               <Link href={"/feed"}>
                 <Button>Feed</Button>
