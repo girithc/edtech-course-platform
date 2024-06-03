@@ -94,7 +94,7 @@ export default async function Page() {
         </div>
         <BentoGrid className="max-w-3xl">
           {posts.map((post, i) => (
-            <Link href={`/feed/${post.id}`}>
+            <Link key={post.id} href={`/feed/${post.id}`}>
               <BentoGridItem
                 key={post.id}
                 title={post.title}
