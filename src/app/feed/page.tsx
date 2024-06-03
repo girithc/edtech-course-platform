@@ -93,29 +93,31 @@ export default async function Page() {
 
         <BentoGrid className="max-w-4xl mx-auto">
           {repeatedPosts.map((item, i) => (
-            <BentoGridItem
-              key={i}
-              title={item.title}
-              description={item.summary}
-              header={
-                <div className="flex flex-1 w-full h-full rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
-                  <Image
-                    src={"/sky.jpeg"}
-                    alt="thumbnail"
-                    width={300}
-                    height={150}
-                    objectFit="cover"
-                    className={
-                      i === 3 || i === 6
-                        ? "md:col-span-2 rounded-xl"
-                        : "rounded-xl"
-                    }
-                  />
-                </div>
-              }
-              icon={<IconTableColumn className="h-4 w-4 text-neutral-500" />}
-              className={i === 3 || i === 6 ? "md:col-span-2" : ""}
-            />
+            <Link key={item.id} href={`/feed/${item.id}`}>
+              <BentoGridItem
+                key={i}
+                title={item.title}
+                description={item.summary}
+                header={
+                  <div className="flex flex-1 w-full h-full rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
+                    <Image
+                      src={"/sky.jpeg"}
+                      alt="thumbnail"
+                      width={300}
+                      height={150}
+                      objectFit="cover"
+                      className={
+                        i === 3 || i === 6
+                          ? "md:col-span-2 rounded-xl"
+                          : "rounded-xl"
+                      }
+                    />
+                  </div>
+                }
+                icon={<IconTableColumn className="h-4 w-4 text-neutral-500" />}
+                className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+              />
+            </Link>
           ))}
         </BentoGrid>
       </div>
