@@ -1,10 +1,7 @@
-import { GetServerSideProps } from "next";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
-import { UserNav } from "@/components/layout/user-nav";
 import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
 import React from "react";
 import prisma from "./prisma";
@@ -22,6 +19,13 @@ import {
   IconHome,
 } from "@tabler/icons-react";
 import { FloatingNav } from "@/components/floating-navbar";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import {
+  FontBoldIcon,
+  FontItalicIcon,
+  UnderlineIcon,
+} from "@radix-ui/react-icons";
+
 interface Author {
   name: string | null; // Allow name to be null
 }
@@ -50,6 +54,7 @@ async function getData() {
 
   return posts;
 }
+const initialFruits = ["Apple", "Banana", "Cherry", "Watermelon", "Orange"];
 
 export default async function Page() {
   const posts = await getData();
@@ -73,17 +78,10 @@ export default async function Page() {
     },
   ];
   const repeatedPosts = Array(10).fill(posts).flat();
-  const styles = {
-    gradientOverlay: {
-      background:
-        "linear-gradient(to top, rgba(102, 102, 255, 0.4), rgba(0, 0, 0, 0))",
-      borderRadius: "0.75rem", // Same as rounded-xl
-    },
-  };
 
   return (
     <>
-      <div className="flex-1 space-y-4 p-4 pt-6 md:p-6">
+      <div className="flex-1 space-y-4 p-4 md:p-6">
         <FloatingNav navItems={navItems} />
 
         <div className="flex items-center justify-between space-y-2">
@@ -96,10 +94,23 @@ export default async function Page() {
             </Link>
           </div>
           <div className="flex items-center gap-2">
-            <UserNav />
             <ThemeToggle />
           </div>
         </div>
+        <ToggleGroup type="multiple" variant="outline">
+          <ToggleGroupItem value="bold" aria-label="Toggle bold">
+            Learn <FontBoldIcon className="h-4 w-4" />
+          </ToggleGroupItem>
+          <ToggleGroupItem value="italic" aria-label="Toggle italic">
+            Fun <FontItalicIcon className="h-4 w-4" />
+          </ToggleGroupItem>
+          <ToggleGroupItem
+            value="strikethrough"
+            aria-label="Toggle strikethrough"
+          >
+            Upskill <UnderlineIcon className="h-4 w-4" />
+          </ToggleGroupItem>
+        </ToggleGroup>
         <div>
           <BentoGrid className="">
             {repeatedPosts.map((post, i) => (

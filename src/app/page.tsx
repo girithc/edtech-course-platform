@@ -6,9 +6,11 @@ import Link from "next/link";
 import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
 import { BackgroundBeams } from "@/components/background-beams";
 import { FlipWords } from "@/components/flip-words";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, UnderlineIcon } from "lucide-react";
 import { Tabs } from "@/components/tabs";
 import Image from "next/image";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { FontBoldIcon, FontItalicIcon } from "@radix-ui/react-icons";
 
 const World = dynamic(
   () => import("../components/globe").then((m) => m.World),
@@ -454,14 +456,14 @@ const GlobeDemo: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center py-8 h-full dark:bg-black bg-white w-full overflow-hidden p-4">
+    <div className="flex flex-col items-center justify-center  h-full dark:bg-black bg-white w-full overflow-hidden p-4">
       <div className="absolute inset-0 z-0">
         <BackgroundBeams />
       </div>
 
       <div className="max-w-7xl w-full relative overflow-hidden h-auto z-5">
-        <div className="flex items-center justify-between mb-4 px-10">
-          <div className="items-center space-x-2 md:flex"></div>
+        <div className="flex items-center justify-between ">
+          <div className="items-center  md:flex"></div>
           <div className="flex items-center gap-2">
             <ThemeToggle />
           </div>

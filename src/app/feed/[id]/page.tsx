@@ -104,7 +104,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       <TracingBeam className="">
         <div
           className="flex-col 
-        space-y-4 p-4 pt-6"
+        space-y-4 p-4 "
         >
           <FloatingNav navItems={navItems} />
 
@@ -118,12 +118,11 @@ export default async function Page({ params }: { params: { id: string } }) {
               </Link>
             </div>
             <div className="flex items-center gap-2">
-              <UserNav />
               <ThemeToggle />
             </div>
           </div>
-          <div className="flex items-center justify-center space-y-4 p-4 md:p-6">
-            <div className="z-10  w-full max-w-5xl rounded-lg p-4 text-lg">
+          <div className="flex items-center justify-center p-4 md:p-6">
+            <div className="z-10  w-full max-w-5xl rounded-lg text-lg">
               <h1 className="mb-4 text-4xl font-bold w-full flex justify-center items-center text-center">
                 {post.title}
               </h1>
