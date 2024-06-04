@@ -7,6 +7,8 @@ import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
 import { BackgroundBeams } from "@/components/background-beams";
 import { FlipWords } from "@/components/flip-words";
 import { ArrowRight } from "lucide-react";
+import { Tabs } from "@/components/tabs";
+import Image from "next/image";
 
 const World = dynamic(
   () => import("../components/globe").then((m) => m.World),
@@ -15,7 +17,19 @@ const World = dynamic(
   }
 );
 
-export default function GlobeDemo() {
+const DummyContent: React.FC = () => {
+  return (
+    <Image
+      src="/sky.jpeg"
+      alt="dummy image"
+      width={800}
+      height={800}
+      className="object-cover object-left-top h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
+    />
+  );
+};
+
+const GlobeDemo: React.FC = () => {
   const words = ["ai tools", "ai education", "ai community"];
 
   const globeConfig = {
@@ -40,7 +54,9 @@ export default function GlobeDemo() {
     autoRotate: true,
     autoRotateSpeed: 4.0,
   };
+
   const colors = ["#ff5d0d", "#ff5d0d", "#ff5d0d"];
+
   const sampleArcs = [
     {
       order: 1,
@@ -404,45 +420,73 @@ export default function GlobeDemo() {
     },
   ];
 
+  const tabs = [
+    {
+      title: "Learn",
+      value: "product",
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl px-10 py-5 md:py-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+          <p>Learn Tab</p>
+          <DummyContent />
+        </div>
+      ),
+    },
+    {
+      title: "Fun",
+      value: "services",
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl px-10 py-5 md:py-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+          <p>Fun tab</p>
+          <DummyContent />
+        </div>
+      ),
+    },
+    {
+      title: "Upksill",
+      value: "Playground",
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl px-10 py-5 md:py-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+          <p>Upskill tab</p>
+          <DummyContent />
+        </div>
+      ),
+    },
+  ];
+
   return (
-    <div className="relative flex flex-col items-center justify-center py-8 h-screen dark:bg-black bg-white w-full overflow-hidden">
-      {/* Sparkles background */}
+    <div className="flex flex-col items-center justify-center py-8 h-full dark:bg-black bg-white w-full overflow-hidden p-4">
       <div className="absolute inset-0 z-0">
         <BackgroundBeams />
       </div>
 
-      <div className="max-w-7xl w-full relative overflow-hidden h-full md:h-auto z-5">
+      <div className="max-w-7xl w-full relative overflow-hidden h-auto z-5">
         <div className="flex items-center justify-between mb-4 px-10">
           <div className="items-center space-x-2 md:flex"></div>
           <div className="flex items-center gap-2">
             <ThemeToggle />
           </div>
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="div"
-        >
-          <div className="text-4xl mx-auto font-normal text-neutral-600 dark:text-neutral-400 text-center">
-            <Link href={"/feed"}>
-              <button className="p-[3px] relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-400 rounded-lg dark:from-blue-700 dark:to-purple-600" />
-                <div className="px-8 py-2 bg-white dark:bg-transparent rounded-[6px] relative group transition duration-200 text-black dark:text-white hover:bg-transparent flex items-center justify-center">
-                  <FlipWords words={words} />
-                  <ArrowRight className="ml-2" />
-                </div>
-              </button>
-            </Link>
-            <br />
-            tailored for kids
-          </div>
-        </motion.div>
 
-        <div className="relative w-full h-full md:h-[60rem] z-0 p-0 items-center justify-center">
-          <World data={sampleArcs} globeConfig={globeConfig} />
+        <div className=" text-2xl mx-auto font-normal text-neutral-600 dark:text-neutral-400 text-center mb-20">
+          <Link href={"/feed"}>
+            <button className="p-[4px] relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-400 rounded-lg dark:from-blue-700 dark:to-purple-600" />
+              <div className="px-8 py-2 bg-white dark:bg-transparent rounded-[6px] relative group transition duration-200 text-black dark:text-white hover:bg-transparent flex items-center justify-center">
+                <FlipWords words={words} />
+                <ArrowRight className="ml-2" />
+              </div>
+            </button>
+          </Link>
+          <br />
+          tailored for kids
+        </div>
+
+        <div className=" h-[25rem] md:h-[40rem] [perspective:1000px] relative flex flex-col max-w-5xl mx-auto w-full items-start justify-start mb-8">
+          <Tabs tabs={tabs} />
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default GlobeDemo;
