@@ -73,6 +73,13 @@ export default async function Page() {
     },
   ];
   const repeatedPosts = Array(10).fill(posts).flat();
+  const styles = {
+    gradientOverlay: {
+      background:
+        "linear-gradient(to top, rgba(102, 102, 255, 0.4), rgba(0, 0, 0, 0))",
+      borderRadius: "0.75rem", // Same as rounded-xl
+    },
+  };
 
   return (
     <>
@@ -84,42 +91,43 @@ export default async function Page() {
             <Link href={"/"}>
               <Button variant={"outline"}>Home</Button>
             </Link>
+            <Link href={"/talk"}>
+              <Button>Talk</Button>
+            </Link>
           </div>
           <div className="flex items-center gap-2">
             <UserNav />
             <ThemeToggle />
           </div>
         </div>
-
-        <BentoGrid className="max-w-4xl mx-auto">
-          {repeatedPosts.map((item, i) => (
-            <Link key={item.id} href={`/feed/${item.id}`}>
-              <BentoGridItem
-                key={i}
-                title={item.title}
-                description={item.summary}
-                header={
-                  <div className="flex flex-1 w-full h-full rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
-                    <Image
-                      src={"/sky.jpeg"}
-                      alt="thumbnail"
-                      width={300}
-                      height={150}
-                      objectFit="cover"
-                      className={
-                        i === 3 || i === 6
-                          ? "md:col-span-2 rounded-xl"
-                          : "rounded-xl"
-                      }
-                    />
-                  </div>
-                }
-                icon={<IconTableColumn className="h-4 w-4 text-neutral-500" />}
-                className={i === 3 || i === 6 ? "md:col-span-2" : ""}
-              />
-            </Link>
-          ))}
-        </BentoGrid>
+        <div>
+          <BentoGrid className="">
+            {repeatedPosts.map((post, i) => (
+              <Link key={post.id} href={`/feed/${post.id}`}>
+                <BentoGridItem
+                  key={post.id}
+                  title={post.title}
+                  description={post.summary}
+                  header={
+                    <div className="relative w-full h-36 rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
+                      <Image
+                        src="/sky.jpeg"
+                        alt="thumbnail"
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-xl"
+                      />
+                    </div>
+                  }
+                  icon={
+                    <IconClipboardCopy className="h-4 w-4 text-neutral-500" />
+                  }
+                  className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+                />
+              </Link>
+            ))}
+          </BentoGrid>
+        </div>
       </div>
     </>
   );
