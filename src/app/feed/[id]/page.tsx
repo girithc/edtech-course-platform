@@ -1,14 +1,10 @@
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
 import { UserNav } from "@/components/layout/user-nav";
 import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
 import prisma from "../prisma";
-import { useRouter } from "next/router";
-import { JsonValue } from "@prisma/client/runtime/library";
-import Head from "next/head";
 import { TracingBeam } from "@/components/tracing-beam";
 import { FloatingNav } from "@/components/floating-navbar";
 import { IconRefresh, IconHome } from "@tabler/icons-react";

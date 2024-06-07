@@ -114,7 +114,10 @@ export default async function Page() {
         <div>
           <BentoGrid className="">
             {repeatedPosts.map((post, i) => (
-              <Link key={post.id} href={`/feed/${post.id}`}>
+              <Link
+                key={post.id}
+                href={i % 2 === 0 ? `/feed/${post.id}` : `/tools/${post.id}`}
+              >
                 <BentoGridItem
                   key={post.id}
                   title={post.title}

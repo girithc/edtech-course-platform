@@ -1,10 +1,10 @@
 "use client";
-
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 import { cn } from "../../lib/utils";
+import { useTheme } from "next-themes";
 
 const Accordion = AccordionPrimitive.Root;
 
@@ -43,15 +43,31 @@ AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
 const AccordionContent = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Content
-    ref={ref}
-    className="overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
-    {...props}
-  >
-    <div className={cn("pb-4 pt-0", className)}>{children}</div>
-  </AccordionPrimitive.Content>
-));
+>(({ className, children, ...props }, ref) => {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const bgColor = theme === "light" ? "bg-white" : "bg-black";
+
+  return (
+    <AccordionPrimitive.Content
+      ref={ref}
+      className={cn(
+        "overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down  rounded-2xl p-1 mb-5 bg-primary",
+        className
+      )}
+      {...props}
+    >
+      <div className={cn("pb-4 pt-0  rounded-xl p-5", mounted && bgColor)}>
+        {children}
+      </div>
+    </AccordionPrimitive.Content>
+  );
+});
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
