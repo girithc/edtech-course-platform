@@ -51,20 +51,16 @@ const AccordionContent = React.forwardRef<
     setMounted(true);
   }, []);
 
-  const bgColor = theme === "light" ? "bg-white" : "bg-black";
-
   return (
     <AccordionPrimitive.Content
       ref={ref}
       className={cn(
-        "overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down  rounded-2xl p-1 mb-5 bg-primary",
+        "overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down  rounded-2xl p-1 mb-5 bg-secondary text-neutral-600 dark:text-neutral-200",
         className
       )}
       {...props}
     >
-      <div className={cn("pb-4 pt-0  rounded-xl p-5", mounted && bgColor)}>
-        {children}
-      </div>
+      <div className={cn("pb-4 pt-0  rounded-xl p-5")}>{children}</div>
     </AccordionPrimitive.Content>
   );
 });
