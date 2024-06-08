@@ -120,16 +120,18 @@ export default async function Page() {
               >
                 <BentoGridItem
                   key={post.id}
-                  title={post.title}
-                  description={post.summary}
+                  title={i % 2 === 0 ? post.title : "AI Tool Page"}
+                  description={
+                    i % 2 === 0 ? post.summary : "ai tool description"
+                  }
                   header={
-                    <div className="relative w-full h-36 rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
+                    <div className="relative w-full h-36 rounded-2xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
                       <Image
                         src="/sky.jpeg"
                         alt="thumbnail"
                         layout="fill"
                         objectFit="cover"
-                        className="rounded-xl"
+                        className="rounded-lg"
                       />
                     </div>
                   }
