@@ -61,8 +61,9 @@ export default function PaymentButton() {
         onClick={() => {
           makePayment({ productId: "example_ebook" });
         }}
+        className="w-40 h-10 rounded-xl bg-black dark:bg-white border dark:border-white border-transparent text-white dark:text-black text-sm"
       >
-        Buy
+        Join Now
       </button>
     </>
   );

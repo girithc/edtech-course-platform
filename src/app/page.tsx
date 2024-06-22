@@ -72,12 +72,12 @@ const GlobeDemo: React.FC = () => {
             Grad School
           </p>
           <div className="flex flex-row space-x-2 md:space-x-4">
+            <PaymentButton />
             <Link href={"/join"}>
-              <button className="w-40 h-10 rounded-xl bg-black dark:bg-white border dark:border-white border-transparent text-white dark:text-black text-sm">
-                Join Now
+              <button className="w-40 h-10 rounded-xl  border dark:border-white border-grey text-black dark:text-white text-sm">
+                Existing User
               </button>
             </Link>
-            <PaymentButton />
           </div>
         </div>
 
