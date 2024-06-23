@@ -95,7 +95,7 @@ const GlobeDemo: React.FC = () => {
 
 export default GlobeDemo;
 
-export const projects = [
+const projects = [
   {
     title: "Affordable Course",
     description:
