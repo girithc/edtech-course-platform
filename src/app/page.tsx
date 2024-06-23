@@ -72,7 +72,11 @@ const GlobeDemo: React.FC = () => {
             Grad School
           </p>
           <div className="flex flex-row space-x-2 md:space-x-4">
-            <PaymentButton />
+            <Link href={"/join"}>
+              <button className="w-40 h-10 rounded-xl  border bg-black dark:bg-white text-white dark:text-black text-sm">
+                Join Now
+              </button>
+            </Link>
             <Link href={"/join"}>
               <button className="w-40 h-10 rounded-xl  border dark:border-white border-grey text-black dark:text-white text-sm">
                 Existing User
@@ -93,39 +97,39 @@ export default GlobeDemo;
 
 export const projects = [
   {
-    title: "Stripe",
+    title: "Affordable Course",
     description:
-      "A technology company that builds economic infrastructure for the internet.",
-    link: "https://stripe.com",
+      "Learn to master your personal finances with our Affordable Course. Discover how to create and stick to a budget, save money, and achieve your financial goals. Affordable at just ₹49, less than the price of a chai and vadapav.",
+    link: "/join",
   },
   {
-    title: "Netflix",
+    title: "Passive Income Streams",
     description:
-      "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
-    link: "https://netflix.com",
+      "Explore various passive income streams and learn how to earn money while you sleep. Discover strategies to create multiple sources of passive income, making it easier to achieve financial freedom.",
+    link: "/join",
   },
   {
-    title: "Google",
+    title: "Financial Freedom Blueprint",
     description:
-      "A multinational technology company that specializes in Internet-related services and products.",
-    link: "https://google.com",
+      "Create a blueprint for financial freedom with our comprehensive course. Learn how to save, invest, and manage your money wisely, paving the way for a secure financial future.",
+    link: "/join",
   },
   {
-    title: "Meta",
+    title: "Debt-Free Journey",
     description:
-      "A technology company that focuses on building products that advance Facebook's mission of bringing the world closer together.",
-    link: "https://meta.com",
+      "Embark on a debt-free journey with our course. Discover effective strategies to pay off debt, save money on interest, and become debt-free sooner than you thought possible.",
+    link: "/join",
   },
   {
-    title: "Amazon",
+    title: "Investing for Beginners",
     description:
-      "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
-    link: "https://amazon.com",
+      "Start your investing journey with our beginner-friendly course. Learn the basics of investing, how to create an investment plan, and start building wealth for your future.",
+    link: "/join",
   },
   {
-    title: "Microsoft",
+    title: "Smart Money Habits",
     description:
-      "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
-    link: "https://microsoft.com",
+      "Develop smart money habits that will set you up for financial success. Learn how to budget effectively, save money on everyday expenses, and make wise financial decisions.",
+    link: "/join",
   },
 ];

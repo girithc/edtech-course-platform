@@ -1,10 +1,11 @@
 import Script from "next/script";
+import { Button } from "./ui/button";
 
 interface MakePaymentParams {
   productId: string;
 }
 
-const makePayment = async ({ productId }: MakePaymentParams) => {
+export const makePayment = async ({ productId }: MakePaymentParams) => {
   // Make API call to the FastAPI server
   const data = await fetch("http://localhost:8000/pay", {
     method: "POST",
@@ -49,7 +50,13 @@ const makePayment = async ({ productId }: MakePaymentParams) => {
   });
 };
 
-export default function PaymentButton() {
+interface PaymentButtonProps {
+  handleSubmit: (
+    callback: (data: any) => void
+  ) => (e?: React.BaseSyntheticEvent) => Promise<void>;
+}
+
+export default function PaymentButton({ handleSubmit }: PaymentButtonProps) {
   return (
     <>
       <Script
@@ -57,14 +64,18 @@ export default function PaymentButton() {
         src="https://checkout.razorpay.com/v1/checkout.js"
       />
 
-      <button
-        onClick={() => {
-          makePayment({ productId: "example_ebook" });
-        }}
-        className="w-40 h-10 rounded-xl bg-black dark:bg-white border dark:border-white border-transparent text-white dark:text-black text-sm"
+      <Button
+        onClick={handleSubmit(async (data) => {
+          await makePayment({ productId: "example_ebook" });
+        })}
+        className="flex items-center justify-center h-12 w-full relative bg-black"
       >
-        Join Now
-      </button>
+        <img
+          src="/razorpay.png"
+          alt="Razorpay"
+          className="absolute inset-0 h-full w-full object-cover rounded-lg"
+        />
+      </Button>
     </>
   );
 }
