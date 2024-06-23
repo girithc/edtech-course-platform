@@ -77,7 +77,7 @@ const GlobeDemo: React.FC = () => {
                 Join Now
               </button>
             </Link>
-            <Link href={"/join"}>
+            <Link href={"/feed"}>
               <button className="w-40 h-10 rounded-xl  border dark:border-white border-grey text-black dark:text-white text-sm">
                 Existing User
               </button>
