@@ -1,5 +1,4 @@
 import BreadCrumb from "@/components/breadcrumb";
-import { CreateProfileOne } from "@/components/forms/user-profile-stepper/create-profile";
 import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
 import { UserNav } from "@/components/layout/user-nav";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -19,7 +18,6 @@ export default function page() {
             <ThemeToggle />
           </div>
         </div>
-        <CreateProfileOne categories={[]} initialData={null} />
       </div>
     </ScrollArea>
   );
