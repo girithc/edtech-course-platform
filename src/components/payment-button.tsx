@@ -6,6 +6,7 @@ interface MakePaymentParams {
 }
 
 export const makePayment = async ({ productId }: MakePaymentParams) => {
+  console.log("Entered makePayment");
   // Make API call to the FastAPI server
   const data = await fetch("http://localhost:8000/pay", {
     method: "POST",

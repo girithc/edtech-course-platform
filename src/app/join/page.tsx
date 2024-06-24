@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/select";
 import Image from "next/image";
 import PaymentButton from "@/components/payment-button";
+import Link from "next/link";
 
 const FormSchema = z.object({
   username: z
@@ -70,14 +71,16 @@ export default function Page() {
           <div className="flex-1 space-y-4 pt-2 md:pt-6 mb-5 md:mb-10 p-5">
             <div className="flex items-center justify-between space-y-2">
               <div className="items-center space-x-2 md:flex">
-                <p>Grad School</p>
+                <Link href={"/"}>
+                  <p>Grad School</p>
+                </Link>
               </div>
               <div className="flex items-center gap-2">
                 <ThemeToggle />
               </div>
             </div>
           </div>
-          <div className="border-black rounded-xl bg-slate-100 dark:bg-blue-800 p-5 md:w-2/3 mx-auto">
+          <div className="border-black rounded-xl bg-slate-100 dark:bg-blue-800 p-4 md:p-5 md:w-2/3 mx-auto">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}

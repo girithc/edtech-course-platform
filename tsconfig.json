@@ -25,7 +25,8 @@
     "next-env.d.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/feed/[id]"
+    "src/app/feed/[id]",
+    "middleware.ts"
   ],
   "exclude": ["node_modules"]
 }

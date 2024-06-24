@@ -77,7 +77,7 @@ export default async function Page() {
       ),
     },
   ];
-  const repeatedPosts = Array(10).fill(posts).flat();
+  const repeatedPosts = Array(2).fill(posts).flat();
 
   return (
     <>

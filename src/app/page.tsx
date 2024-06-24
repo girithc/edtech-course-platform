@@ -73,11 +73,12 @@ const GlobeDemo: React.FC = () => {
           </p>
           <div className="flex flex-row space-x-2 md:space-x-4">
             <Link href={"/join"}>
-              <button className="w-40 h-10 rounded-xl  border bg-black dark:bg-white text-white dark:text-black text-sm">
-                Join Now
+              <button className="w-40 h-10 rounded-xl border bg-black dark:bg-white text-white dark:text-black text-sm">
+                Buy for ₹49
               </button>
             </Link>
-            <Link href={"/feed"}>
+
+            <Link href={"/login"}>
               <button className="w-40 h-10 rounded-xl  border dark:border-white border-grey text-black dark:text-white text-sm">
                 Existing User
               </button>
