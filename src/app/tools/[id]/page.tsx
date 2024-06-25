@@ -150,7 +150,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                       <p>
                         <strong>Topic Sentence:</strong> Stocks represent
                         ownership in a company and entitle shareholders to a
-                        portion of the company's profits.
+                        portion of the company&apos;s profits.
                       </p>
                       <p>
                         <strong>Evidence:</strong> The Bombay Stock Exchange
@@ -203,7 +203,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                         in the future. If the price goes up, you can buy it
                         cheaper with your ticket, or you can choose not to buy
                         it if the price goes down. For example, if you think the
-                        price of Tata Motors' stock will rise in the next three
+                        price of Tata Motors stock will rise in the next three
                         months, you can buy a call option. If the stock price
                         increases as expected, you can buy the stock at the
                         lower price specified in the option. However, options
