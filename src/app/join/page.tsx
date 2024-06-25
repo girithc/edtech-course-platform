@@ -69,10 +69,10 @@ export default function Page() {
       <ScrollArea className="h-full ">
         <div className="max-w-5xl mx-auto px-8 ">
           <div className="flex-1 space-y-4 pt-2 md:pt-6 mb-5 md:mb-10 p-5">
-            <div className="flex items-center justify-between space-y-2">
+            <div className="flex items-center justify-center p-2 md:p-6 gap-4">
               <div className="items-center space-x-2 md:flex">
                 <Link href={"/"}>
-                  <p>Grad School</p>
+                  <Button variant={"outline"}>Home</Button>
                 </Link>
               </div>
               <div className="flex items-center gap-2">
@@ -81,6 +81,11 @@ export default function Page() {
             </div>
           </div>
           <div className="border-black rounded-xl bg-slate-100 dark:bg-blue-800 p-4 md:p-5 md:w-2/3 mx-auto">
+            <div className="p-2 md:p-4 rounded-lg bg-white items-center justify-center flex text-lg sm:text-xl text-black ">
+              Course: Earn Money With Finance Stocks and Futures
+            </div>
+            <br />
+
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -136,7 +141,9 @@ export default function Page() {
                     </FormItem>
                   )}
                 />
-                <PaymentButton handleSubmit={form.handleSubmit} />
+                <div className="p-1 rounded-lg bg-white">
+                  <PaymentButton handleSubmit={form.handleSubmit} />
+                </div>
               </form>
             </Form>
           </div>

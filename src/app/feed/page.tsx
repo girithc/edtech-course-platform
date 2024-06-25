@@ -17,6 +17,7 @@ import {
   IconUser,
   IconMessage,
   IconHome,
+  IconLogout,
 } from "@tabler/icons-react";
 import { FloatingNav } from "@/components/floating-navbar";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -25,6 +26,8 @@ import {
   FontItalicIcon,
   UnderlineIcon,
 } from "@radix-ui/react-icons";
+import { DropdownMenu } from "@/components/ui/dropdown-menu";
+import Cookies from "js-cookie";
 
 interface Author {
   name: string | null; // Allow name to be null
@@ -79,24 +82,35 @@ export default async function Page() {
   ];
   const repeatedPosts = Array(2).fill(posts).flat();
 
+  const handleLogout = () => {
+    Cookies.remove("auth_token");
+  };
+
   return (
     <>
       <div className="flex-1 space-y-4 p-4 md:p-6">
         <FloatingNav navItems={navItems} />
 
-        <div className="flex items-center justify-between space-y-2">
+        <div className="flex items-center justify-center p-2 md:p-6 gap-4">
           <div className="items-center space-x-2 md:flex">
-            <Link href={"/"}>
+            <Link href={"/feed"}>
               <Button variant={"outline"}>Home</Button>
-            </Link>
-            <Link href={"/talk"}>
-              <Button>Talk</Button>
             </Link>
           </div>
           <div className="flex items-center gap-2">
             <ThemeToggle />
           </div>
+          <div className="flex items-center gap-2">
+            <Link href={"/logout"}>
+              <Button variant="outline" size="icon">
+                <IconLogout className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <IconLogout className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+            </Link>
+          </div>
         </div>
+        {/* 
         <ToggleGroup type="multiple" variant="outline">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
             Learn <FontBoldIcon className="h-4 w-4" />
@@ -111,6 +125,8 @@ export default async function Page() {
             Upskill <UnderlineIcon className="h-4 w-4" />
           </ToggleGroupItem>
         </ToggleGroup>
+        */}
+
         <div>
           <BentoGrid className="">
             {repeatedPosts.map((post, i) => (

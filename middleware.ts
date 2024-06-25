@@ -3,33 +3,24 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const authToken = request.cookies.get("auth_token");
-  const { pathname } = request.nextUrl;
 
-  if (!authToken) {
-    if (
-      pathname === "/feed" ||
-      pathname === "/join" ||
-      pathname === "/tools" ||
-      pathname === "/"
-    ) {
-      return NextResponse.next();
-    } else if (pathname === "/login") {
-      return NextResponse.redirect(new URL("/join", request.url));
-    } else {
-      return NextResponse.redirect(new URL("/", request.url));
-    }
-  } else {
-    if (
-      pathname === "/feed" ||
-      pathname === "/join" ||
-      pathname === "/" ||
-      pathname === "/tools"
-    ) {
-      return NextResponse.next();
-    } else if (pathname === "/login") {
-      return NextResponse.redirect(new URL("/join", request.url));
-    } else {
-      return NextResponse.redirect(new URL("/", request.url));
-    }
+  if (
+    !authToken &&
+    (request.nextUrl.pathname === "/feed" ||
+      request.nextUrl.pathname === "/tool")
+  ) {
+    return NextResponse.redirect(new URL("/join", request.url));
   }
+
+  if (authToken && request.nextUrl.pathname === "/login") {
+    return NextResponse.redirect(new URL("/feed", request.url));
+  }
+
+  if (authToken && request.nextUrl.pathname === "/logout") {
+    const response = NextResponse.redirect(new URL("/", request.url));
+    response.cookies.delete("auth_token");
+    return response;
+  }
+
+  return NextResponse.next();
 }
