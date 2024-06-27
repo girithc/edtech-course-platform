@@ -91,20 +91,6 @@ const GlobeDemo: React.FC = () => {
           <HoverEffect items={projects} className="dark:bg-blue" />
         </div>
       </div>
-      <footer className="mt-auto p-4  text-center bg-slate-50 dark:bg-black">
-        <div className="flex justify-center space-x-4">
-          <Link href="/terms-of-use">
-            <Button variant="ghost" className="text-slate-400">
-              Terms of Use
-            </Button>
-          </Link>
-          <Link href="/refund-policy">
-            <Button variant="ghost" className="text-slate-400">
-              Refund Policy
-            </Button>
-          </Link>
-        </div>
-      </footer>
     </div>
   );
 };

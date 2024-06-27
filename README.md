@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+gcloud run deploy pronto-go \
+--image gcr.io/hip-well-400702/myapp:version1 \
+--set-env-vars INSTANCE_CONNECTION_NAME="hip-well-400702:asia-south1:quickstart-instance" \
+ --set-env-vars DB_NAME="quickstart_db" \
+ --set-env-vars DB_USER="postgres" \
+ --set-env-vars DB_PASSWORD= "bUwbyrtejdy2nocvib" \
+ --service-account="quickstart-service-account@hip-well-400702.iam.gserviceaccount.com" \
+ --allow-unauthenticated
+
+DB PASSWORD zeqpor-mudtym-fuxpA9

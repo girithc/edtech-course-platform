@@ -141,7 +141,7 @@ export default function Page() {
                     </FormItem>
                   )}
                 />
-                <div className="p-1 rounded-lg bg-white">
+                <div className="rounded-lg ">
                   <PaymentButton handleSubmit={form.handleSubmit} />
                 </div>
               </form>
